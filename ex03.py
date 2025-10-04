@@ -3,13 +3,16 @@ import re
 
 def normalize_phone(phone_number: str) -> str:
     """
-    @brief Normalizes a phone number to international format.
+    Normalizes a phone number to international format.
 
-    @param phone_number Input phone number as a string. Can contain any characters.
+    :param phone_number: Input phone number as a string. Can contain any characters.
+    :type phone_number: str
 
-    @return str Normalized phone number in the format '+38XXXXXXXXXX'.
+    :return: Normalized phone number in the format "+38XXXXXXXXXX".
+    :rtype: str
 
-    @throws ValueError If the phone number cannot be normalized (not 10 or 12 digits after cleaning).
+    :raises ValueError: If the phone number cannot be normalized
+                        (not 10 or 12 digits after cleaning).
     """
 
     # Getting rid of all characters except numbers
