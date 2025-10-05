@@ -30,3 +30,28 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list[int]:
     shuffle(ret)
 
     return sorted(ret[:quantity])
+
+
+# Tests:
+
+if __name__ == "__main__":
+
+    tests = [
+        [None, None, None],
+        ["1", "2", "3"],
+        [1, 2, 3],
+        [0, 1000, 50],
+        [1, 1001, 50],
+        [1, 20, 50],
+        [20, 100, 10],
+        [5, 1000, 90],
+        [1, 200, 50],
+        [80, 1000, 90],
+    ]
+
+    for test in tests:
+        print(f"{str(test):25}", end="")
+        try:
+            print(get_numbers_ticket(test[0], test[1], test[2]))
+        except Exception as e:
+            print(e)

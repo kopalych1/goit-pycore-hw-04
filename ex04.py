@@ -81,3 +81,32 @@ def get_upcoming_birthdays(users: list[dict[str:str]]):
             )
 
     return ret
+
+
+# Tests:
+
+if __name__ == "__main__":
+
+    def create_user(name: str, birthday: str) -> dict:
+        return {"name": name, "birthday": birthday}
+
+    tests = [
+        None,
+        123,
+        [{"123": 123}],
+        [{"123": "123"}],
+        [{"name": 123, "birthday": 123}],
+        [create_user("Paul", "1990.01.10"), create_user("John", "1990.01.10")],
+        [create_user("Paul", "1990.10.5")],
+        [create_user("Paul", "1990.10.10"), create_user("Paul", "1990.10.11")],
+        [create_user("Paul", "1990.10.12")],
+    ]
+
+    for test in tests:
+        print(f"In:  {str(test)}", end="\t\t\n")
+        print("Out: ", end="")
+        try:
+            print(get_upcoming_birthdays(test))
+        except Exception as e:
+            print(e)
+        print()

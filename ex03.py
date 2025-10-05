@@ -28,3 +28,36 @@ def normalize_phone(phone_number: str) -> str:
     if re.search("38", ret):
         return "+" + ret
     return "+38" + ret
+
+
+# Tests:
+
+if __name__ == "__main__":
+    tests = [
+        None,
+        123,
+        "",
+        " ",
+        "38489484512984",
+        "38489484512",
+        "3848948451211",
+        "384894845122",
+        "34894845122",
+        "4894845122",
+        "067\\t123 4567",
+        "(095) 234-5678\\n",
+        "+380 44 123 4567",
+        "380501234567",
+        "    +38(050)123-32-34",
+        "     0503451234",
+        "(050)8889900",
+        "38050-111-22-22",
+        "38050 111 22 11   ",
+    ]
+
+    for test in tests:
+        print(f"{str(test):25}", end="")
+        try:
+            print(normalize_phone(test))
+        except Exception as e:
+            print(e)

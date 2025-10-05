@@ -25,3 +25,36 @@ def get_days_from_today(date: str) -> int:
         raise ValueError(f"String '{date}' does not match format '%Y-%m-%d'") from e
 
     return (datetime.today().date() - input_date.date()).days
+
+
+# Tests:
+
+if __name__ == "__main__":
+    tests = [
+        None,
+        123,
+        "",
+        " ",
+        "---",
+        "123",
+        "05.10.2025",
+        "05/10/2025",
+        "055446552025",
+        "0554406-552025",
+        "0554-06552025",
+        "0554-06-552025",
+        "0554-06-abc",
+        "2025-10-1",
+        "2025-1-20",
+        "102-1-20",
+        "0102-1-20",
+        "2025-10-01",
+        "2025-10-10",
+    ]
+
+    for test in tests:
+        print(f"{str(test):20}", end="")
+        try:
+            print(get_days_from_today(test))
+        except Exception as e:
+            print(e)
