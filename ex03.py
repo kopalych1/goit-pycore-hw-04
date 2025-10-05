@@ -11,14 +11,18 @@ def normalize_phone(phone_number: str) -> str:
     :return: Normalized phone number in the format "+38XXXXXXXXXX".
     :rtype: str
 
+    :raises TypeError: If the input is not of string type.
     :raises ValueError: If the phone number cannot be normalized
                         (not 10 or 12 digits after cleaning).
     """
 
+    if not isinstance(phone_number, str):
+        raise TypeError("Argument must be a string")
+
     # Getting rid of all characters except numbers
     ret = re.sub("[^0-9]", "", phone_number)
 
-    if len(ret) != 10 and len(ret) != 12:
+    if not (len(ret) == 10 or (len(ret) == 12 and ret[0:2] == "38")):
         raise ValueError("Provided number cannot be normalized")
 
     if re.search("38", ret):

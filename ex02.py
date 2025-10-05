@@ -15,7 +15,12 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list[int]:
     :return: Sorted list of unique random numbers.
              Returns an empty list if input parameters are out of allowed bounds.
     :rtype: list[int]
+
+    :raises TypeError: If any of the input is not of int type.
     """
+
+    if not all((isinstance(min, int), isinstance(max, int), isinstance(quantity, int))):
+        raise TypeError("All arguments must be type of int")
 
     if min < 1 or max > 1000 or (quantity < min or quantity > max):
         return list()

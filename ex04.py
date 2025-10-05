@@ -14,11 +14,15 @@ def get_upcoming_birthdays(users: list[dict[str:str]]):
              when they should be congratulated (in "YYYY.MM.DD" format).
     :rtype: list[dict[str, str]]
 
+    :raises TypeError: If the input is not of list type.
     :raises ValueError: If data types are invalid, required keys are missing,
                         or birthday format is incorrect.
 
     :note: Birthdays falling on weekends are moved to the following Monday.
     """
+
+    if not isinstance(users, list):
+        raise TypeError("Argument must be a list")
 
     if not len(users):
         return []
